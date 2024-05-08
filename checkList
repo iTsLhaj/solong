@@ -1,0 +1,11 @@
+
+make sure the program accepts only .ber map file name
+try those with (memcheck) if they worked that means there is more stuff to do
+according to the subject: The map must contain 1 exit, at least 1 collectible, and 1 starting position to be valid.
+0 exit
+0 player
+0 coin
+duplicate 'E', 'P' -> this should display an error !!!
+try the big map from the subject pdf ! under "Another example of a minimal ..."
+fix the error it should be followed with a '\n'
+
