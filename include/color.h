@@ -1,5 +1,17 @@
-#ifndef COLORS_H
-# define COLORS_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   color.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/08 02:46:07 by hmouhib           #+#    #+#             */
+/*   Updated: 2024/05/08 02:47:15 by hmouhib          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef COLOR_H
+# define COLOR_H
 
 //Regular text
 # define BLK "\e[0;30m"
@@ -41,7 +53,7 @@
 # define CYNB "\e[46m"
 # define WHTB "\e[47m"
 
-//High intensty background 
+//High intensty background
 # define BLKHB "\e[0;100m"
 # define REDHB "\e[0;101m"
 # define GRNHB "\e[0;102m"
