@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 18:41:22 by hmouhib           #+#    #+#             */
-/*   Updated: 2024/05/08 02:50:01 by hmouhib          ###   ########.fr       */
+/*   Updated: 2024/05/08 03:33:57 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ int	sl_map_setup(t_game_data *game, const char *av1)
 {
 	ft_bzero(game, sizeof(t_game_data));
 	sl_load_map(game, av1);
+	if (game->error_on_exit)
+		return (1);
 	sl_set_window_size(game);
-	sl_game_init_values(game);
 	if (game->map == NULL)
 	{
 		ft_puterror("Invalid Map Provided!\n");
@@ -29,5 +30,6 @@ int	sl_map_setup(t_game_data *game, const char *av1)
 		free_map(game);
 		return (1);
 	}
+	sl_game_init_values(game);
 	return (0);
 }

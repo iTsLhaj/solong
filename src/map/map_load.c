@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 22:24:06 by hmouhib           #+#    #+#             */
-/*   Updated: 2024/05/08 02:50:01 by hmouhib          ###   ########.fr       */
+/*   Updated: 2024/05/08 03:34:38 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	sl_load_map(t_game_data *game, const char *mapfp_)
 	if (!sl_check_mapfile(game->map->mapfp))
 	{
 		free(game->map);
+		game->error_on_exit = 1;
 		game->map = NULL;
 		return ;
 	}
