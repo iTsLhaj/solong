@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 18:41:33 by hmouhib           #+#    #+#             */
-/*   Updated: 2024/05/08 02:50:01 by hmouhib          ###   ########.fr       */
+/*   Updated: 2024/05/08 15:23:33 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,15 +171,18 @@ int	sl_check_map(t_game_data *game)
 		return (1);
 	maph = sl_check_rectangle(game->map);
 	if (!maph)
-		return (1);
+		return (2);
 	ecount = sl_map_ecount(game->map->mapfp, game);
 	if (!ecount)
 	{
 		free(game->entities_count);
-		return (1);
+		return (3);
 	}
 	fftest = sl_flood_fill(game);
 	if (!fftest)
-		return (1);
+	{
+		free(game->entities_count);
+		return (4);
+	}
 	return (0);
 }
