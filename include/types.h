@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 22:00:19 by hmouhib           #+#    #+#             */
-/*   Updated: 2024/05/08 02:50:01 by hmouhib          ###   ########.fr       */
+/*   Updated: 2024/05/10 15:07:00 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ typedef struct s_game_data
 	void		*winptr;
 	t_ecount	*entities_count;
 	t_map		*map;
+	char		**map_clone;
 	int			window_height;
 	int			window_width;
 	t_objects	*objects;

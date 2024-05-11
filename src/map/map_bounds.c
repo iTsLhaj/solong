@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 18:33:52 by hmouhib           #+#    #+#             */
-/*   Updated: 2024/05/08 02:50:01 by hmouhib          ###   ########.fr       */
+/*   Updated: 2024/05/11 21:26:06 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ static void	fetch_map_size(const char *mapfp, int *w, int *h)
  */
 void	sl_set_map_bounds(t_game_data *game)
 {
-	int	fd;
-
 	game->map->map_bounds = NULL;
 	if (!sl_check_mapfile(game->map->mapfp))
 		return ;

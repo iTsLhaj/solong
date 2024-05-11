@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 18:41:33 by hmouhib           #+#    #+#             */
-/*   Updated: 2024/05/08 15:23:33 by hmouhib          ###   ########.fr       */
+/*   Updated: 2024/05/11 21:25:45 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static bool	sl_check_line_length(char *line)
 	{
 		if (line[ft_strlen(line) - 1] == '\n')
 		{
-			if (llength != ft_strlen(line))
+			if (llength != (int)ft_strlen(line))
 				return (false);
 			else
 				return (true);
@@ -60,7 +60,7 @@ static bool	sl_check_line_chars(char *line)
 	i = 0;
 	if (line[ft_strlen(line) - 1] == '\n')
 	{
-		while (line[i] && i < ft_strlen(line) - 1)
+		while (line[i] && i < (int)ft_strlen(line) - 1)
 		{
 			if (ft_strchr("01CEP", line[i]) == NULL)
 				return (false);
@@ -69,7 +69,7 @@ static bool	sl_check_line_chars(char *line)
 	}
 	else
 	{
-		while (line[i] && i < ft_strlen(line))
+		while (line[i] && i < (int)ft_strlen(line))
 		{
 			if (ft_strchr("01CEP", line[i]) == NULL)
 				return (false);
@@ -162,10 +162,6 @@ int	sl_check_map(t_game_data *game)
 	bool	ecount;
 	bool	fftest;
 
-	mapl = false;
-	maph = false;
-	ecount = false;
-	fftest = false;
 	mapl = sl_check_lines(game->map->mapfp);
 	if (!mapl)
 		return (1);

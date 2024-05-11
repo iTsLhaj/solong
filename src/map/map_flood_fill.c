@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 18:35:28 by hmouhib           #+#    #+#             */
-/*   Updated: 2024/05/08 02:50:01 by hmouhib          ###   ########.fr       */
+/*   Updated: 2024/05/11 20:18:41 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,32 @@ t_vect2	*get_player_pos(t_map *map)
 	pp->x = i;
 	pp->y = p - map->m_map[i];
 	return (pp);
+}
+
+static void	flood_fill_e(
+	t_game_data *game,
+	t_claimed *objs,
+	int x, int y)
+{
+	char	cur;
+
+	if ((x > game->map->map_bounds->x)
+		|| (x < 0)
+		|| (y > game->map->map_bounds->y)
+		|| (y < 0))
+		return ;
+	cur = game->map_clone[x][y];
+	if (cur == '-')
+		return ;
+	if (cur == '1')
+		return ;
+	if (cur == 'E')
+		objs->exit = 1;
+	game->map_clone[x][y] = '-';
+	flood_fill_e(game, objs, x + 1, y);
+	flood_fill_e(game, objs, x - 1, y);
+	flood_fill_e(game, objs, x, y + 1);
+	flood_fill_e(game, objs, x, y - 1);
 }
 
 static void	flood_fill(
@@ -79,6 +105,7 @@ bool	sl_flood_fill(t_game_data *game)
 {
 	t_claimed	*inv;
 	t_vect2		*player_pos_;
+	bool		allowed;
 
 	inv = (t_claimed *)malloc(sizeof(t_claimed));
 	ft_bzero((void *)inv, sizeof(t_claimed));
@@ -88,7 +115,10 @@ bool	sl_flood_fill(t_game_data *game)
 	inv->exit = 0;
 	player_pos_ = get_player_pos(game->map);
 	flood_fill(game, inv, player_pos_->x, player_pos_->y);
-	if (inv->collectibles == game->entities_count->collectibles)
+	flood_fill_e(game, inv, player_pos_->x, player_pos_->y);
+	allowed = (inv->collectibles == game->entities_count->collectibles);
+	allowed = allowed && (inv->exit == 1);
+	if (allowed)
 	{
 		free(player_pos_);
 		free(inv);

@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 22:24:06 by hmouhib           #+#    #+#             */
-/*   Updated: 2024/05/08 03:34:38 by hmouhib          ###   ########.fr       */
+/*   Updated: 2024/05/11 20:19:20 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,19 @@ static void	read_map(t_game_data *game)
 	close(fd);
 }
 
+static void	clone_map(t_game_data *game)
+{
+	int	i;
+
+	game->map_clone = (char **)malloc(
+			sizeof(char *) * game->map->map_bounds->x);
+	ft_bzero((void *)game->map_clone,
+		(sizeof(char *) * game->map->map_bounds->x));
+	i = -1;
+	while (++i < game->map->map_bounds->x)
+		game->map_clone[i] = ft_strdup(game->map->m_map[i]);
+}
+
 /**
  * @brief it takes care of the map allocation !
  * @param game game struct !
@@ -77,9 +90,10 @@ void	sl_load_map(t_game_data *game, const char *mapfp_)
 	sl_set_map_bounds(game);
 	game->map->m_map = (char **)malloc(
 			sizeof(char *) * game->map->map_bounds->x);
-	ft_bzero((void *)game->map->m_map,
-		(sizeof(char *) * game->map->map_bounds->x));
 	if (game->map->m_map == NULL)
 		return ;
+	ft_bzero((void *)game->map->m_map,
+		(sizeof(char *) * game->map->map_bounds->x));
 	read_map(game);
+	clone_map(game);
 }
