@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 18:35:28 by hmouhib           #+#    #+#             */
-/*   Updated: 2024/05/11 20:18:41 by hmouhib          ###   ########.fr       */
+/*   Updated: 2024/05/15 00:32:27 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,32 +41,6 @@ t_vect2	*get_player_pos(t_map *map)
 	return (pp);
 }
 
-static void	flood_fill_e(
-	t_game_data *game,
-	t_claimed *objs,
-	int x, int y)
-{
-	char	cur;
-
-	if ((x > game->map->map_bounds->x)
-		|| (x < 0)
-		|| (y > game->map->map_bounds->y)
-		|| (y < 0))
-		return ;
-	cur = game->map_clone[x][y];
-	if (cur == '-')
-		return ;
-	if (cur == '1')
-		return ;
-	if (cur == 'E')
-		objs->exit = 1;
-	game->map_clone[x][y] = '-';
-	flood_fill_e(game, objs, x + 1, y);
-	flood_fill_e(game, objs, x - 1, y);
-	flood_fill_e(game, objs, x, y + 1);
-	flood_fill_e(game, objs, x, y - 1);
-}
-
 static void	flood_fill(
 	t_game_data *game,
 	t_claimed *objs,
@@ -87,6 +61,8 @@ static void	flood_fill(
 	if (cur == 'C')
 		objs->collectibles++;
 	if (cur == 'E')
+		objs->exit = 1;
+	if (cur == 'E' && objs->collectibles != game->entities_count->collectibles)
 		return ;
 	game->map->m_map[x][y] = '-';
 	flood_fill(game, objs, x + 1, y);
@@ -115,7 +91,6 @@ bool	sl_flood_fill(t_game_data *game)
 	inv->exit = 0;
 	player_pos_ = get_player_pos(game->map);
 	flood_fill(game, inv, player_pos_->x, player_pos_->y);
-	flood_fill_e(game, inv, player_pos_->x, player_pos_->y);
 	allowed = (inv->collectibles == game->entities_count->collectibles);
 	allowed = allowed && (inv->exit == 1);
 	if (allowed)

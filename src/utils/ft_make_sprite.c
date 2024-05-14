@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:00:09 by hmouhib           #+#    #+#             */
-/*   Updated: 2024/05/11 21:16:46 by hmouhib          ###   ########.fr       */
+/*   Updated: 2024/05/15 00:08:12 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ static char	*get_image_path(t_obj_type type)
 		return ("exit/unlocked.xpm");
 	if (type == PLAYER)
 		return ("player/luffy-left.xpm");
+	if (type == EMPTY)
+		return ("empty/space.xpm");
 	return (NULL);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 22:03:45 by hmouhib           #+#    #+#             */
-/*   Updated: 2024/05/08 02:50:01 by hmouhib          ###   ########.fr       */
+/*   Updated: 2024/05/15 00:29:27 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ static void	render_line(
 		type_ = ft_get_entity_type(line[i]);
 		if (line[i] == '\n' && type_ == INVALID)
 			break ;
-		if (line[i] == '0')
-			current_position->y += 48;
-		else if (type_ != INVALID && type_ != EMPTY)
+		if (type_ != INVALID)
 			sl_game_renderer(game, type_, current_position);
 		i++;
 	}

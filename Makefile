@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+# CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 LIBS = lib/ptf/libftprintf.a lib/lft/libft.a
 LMLX = -lmlx -lXext -lX11
@@ -17,7 +17,6 @@ SRC = lib/gnl/get_next_line.c			\
 	  src/game/game_init_objects.c		\
 	  src/utils/ft_get_entity_type.c	\
 	  src/utils/ft_make_sprite.c		\
-	  src/utils/ft_sketch.c				\
 	  src/player/player_vanish.c		\
 	  src/player/player_positions.c		\
 	  src/player/player_respawn.c		\

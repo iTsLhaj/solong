@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 22:12:09 by hmouhib           #+#    #+#             */
-/*   Updated: 2024/05/11 21:14:09 by hmouhib          ###   ########.fr       */
+/*   Updated: 2024/05/15 00:38:08 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,17 +95,15 @@ void	sl_game_renderer(
 		return ;
 	}
 	if (type == WALL || type == COLLECTIBLE)
-		sl_add_obj(
-			game,
-			*position,
-			type,
-			sprite_
-			);
+		sl_add_obj(game, *position,
+			type, sprite_);
 	else if (type == PLAYER)
 		render_player(game, sprite_, position);
 	else if (type == DOOR_LOCKED)
 		render_door(game, sprite_, position);
-	if (type != INVALID && type != EMPTY)
+	else if (type == EMPTY)
+		sl_add_obj(game, (t_vect2){-1, -1}, type, sprite_);
+	if (type != INVALID)
 		render_sprite(game, sprite_, position);
 	position->y += sprite_->size.y;
 }

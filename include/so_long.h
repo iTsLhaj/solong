@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 18:45:46 by hmouhib           #+#    #+#             */
-/*   Updated: 2024/05/08 02:50:01 by hmouhib          ###   ########.fr       */
+/*   Updated: 2024/05/15 00:32:05 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,6 @@ void		on_keyclick_rituals(int keycode, t_game_data *game, t_vect2 *nextp);
 void		ft_puterror(char *msg);
 t_obj_type	ft_get_entity_type(char c);
 t_sprite	*ft_mksprite(t_obj_type type, void *mlxptr, char *impath_);
-void		ft_fill_area(
-				t_vect2 point,
-				t_vect2 epoint,
-				t_game_data *game,
-				int color
-				);
-void		fill_background(t_game_data *game);
 t_side		ft_key2side(int xkey);
 int			ft_check_xpm_assets(void *mlxptr);
 
