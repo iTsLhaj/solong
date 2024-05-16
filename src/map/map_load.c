@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 22:24:06 by hmouhib           #+#    #+#             */
-/*   Updated: 2024/05/11 20:19:20 by hmouhib          ###   ########.fr       */
+/*   Updated: 2024/05/16 17:32:34 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ void	sl_load_map(t_game_data *game, const char *mapfp_)
 	ft_bzero((void *)game->map, sizeof(t_map));
 	if (game->map == NULL)
 		return ;
-	if (mapfp_ == NULL)
-		return ;
+	if (sl_check_mapfext((char *)mapfp_, (void *)game->map))
+		exit(1);
 	ft_strlcpy(game->map->mapfp, mapfp_, PATH_MAX);
 	if (!sl_check_mapfile(game->map->mapfp))
 	{

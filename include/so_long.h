@@ -6,7 +6,7 @@
 /*   By: hmouhib <hmouhib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 18:45:46 by hmouhib           #+#    #+#             */
-/*   Updated: 2024/05/15 00:32:05 by hmouhib          ###   ########.fr       */
+/*   Updated: 2024/05/16 17:33:34 by hmouhib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <color.h>
 
 /*** map\ ***/
+int			sl_check_mapfext(char *mapfp, void *map);
 bool		sl_check_mapfile(const char *mapfp);
 bool		sl_map_ecount(const char *mapfp, t_game_data *game);
 void		sl_set_map_bounds(t_game_data *game);

@@ -8,6 +8,7 @@ SRC = lib/gnl/get_next_line.c			\
 	  src/map/map_test.c				\
 	  src/map/map_util.c				\
 	  src/utils/ft_puterror.c			\
+	  src/map/headache.c				\
 	  src/map/map_load.c				\
 	  src/map/map_bounds.c				\
 	  src/map/map_alloc.c				\
